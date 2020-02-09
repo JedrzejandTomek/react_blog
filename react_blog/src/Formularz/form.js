@@ -1,30 +1,37 @@
-import React from "react";
+import React from 'react';
 
-export default class Author extends React.Component{
-
+export default class Form extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
-            name: "John",
-            surname: "Smith",
-            age: 30
-
-        }
-
+            id: null,
+            title: "",
+            content: ""
+        };
     }
 
     render() {
         return (
+            <form>
+                <p>Please enter ID:</p>
+                <input
+                    type='text'
+                    name='id'
+                />
+                <p>Please enter title:</p>
+                <input
+                    type='text'
+                    name='title'
+                />
+                <p>Please enter content:</p>
+                <input
+                    type='text'
+                    name='content'
+                />
 
-            <div>
-                <p>{this.state.name}</p>
-                <p>{this.state.surname}</p>
-                <p>{this.state.age}</p>
-            </div>
-    );
+            </form>
 
-
+        );
     }
-
 }
+
