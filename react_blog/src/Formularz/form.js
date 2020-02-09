@@ -28,7 +28,9 @@ export default class Form extends React.Component {
                     type='text'
                     name='content'
                 />
+                    <br/><br/>
 
+                    <button>Submit</button>
             </form>
 
         );
