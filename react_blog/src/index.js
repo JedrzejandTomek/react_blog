@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 /*import Author from "./Autor/author";*/
-import Navigation from "./pasekNawigacji/navigation";
+/*import Navigation from "./pasekNawigacji/navigation";*/
+import Form from "./Formularz/form";
 
-ReactDOM.render(<Navigation />, document.getElementById('root'));
+ReactDOM.render(<Form />, document.getElementById('root'));
