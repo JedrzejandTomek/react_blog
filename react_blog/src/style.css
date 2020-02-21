@@ -29,6 +29,10 @@ ul{
     
 }
 
+h4{
+    width: 1000px;
+}
+
 input[type=text]{
         width: 300px;
 }
