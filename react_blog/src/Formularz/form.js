@@ -12,7 +12,7 @@ export default class Form extends React.Component {
 
     render() {
         return (
-            <form>
+            <form className="form">
                 <p>Please enter ID:</p>
                 <input
                     type='text'
@@ -24,13 +24,13 @@ export default class Form extends React.Component {
                     name='title'
                 />
                 <p>Please enter content:</p>
-                <input
+                <textarea className="text-area"
                     type='text'
                     name='content'
                 />
                     <br/><br/>
 
-                    <button>Submit</button>
+                    <button className="submitButton">Submit</button>
             </form>
 
         );
