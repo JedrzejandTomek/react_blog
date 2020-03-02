@@ -32,7 +32,7 @@ export default class Form extends React.Component {
 
         if (name === "title"){
             if (value.length <= 2){
-                errTitle = <strong>Your title must be more than 2 characters</strong>;
+                errTitle = <strong>Your title must be more than two characters</strong>;
             }  
             this.setState({errormessage: errTitle});
         }
