@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-export default class AddArticle extends React.Component {
+export default class EditArticle extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,6 +11,12 @@ export default class AddArticle extends React.Component {
             errormessage: "",
            
         };
+
+         this.state = {
+            email: '',
+            title: '',
+            content: ''
+        }
     }
 
     // walidacja formularza     
@@ -56,8 +62,8 @@ export default class AddArticle extends React.Component {
         axios.get('http://localhost:4000/articles/edit-article/' + this.props.match.params.id)
             .then(res => {
                 this.setState({
+                    email: res.data.email,
                     title: res.data.title,
-                    author: res.data.author,
                     content: res.data.content
                 });
             })
@@ -75,7 +81,7 @@ export default class AddArticle extends React.Component {
             content: this.state.content,
         }
 
-        axios.put('http://localhost:4000/articles/edit-article'
+        axios.put('http://localhost:4000/articles/update-article/'
         + this.props.match.params.id, article)
              .then(res => {
                 console.log(res.data)
@@ -118,7 +124,7 @@ export default class AddArticle extends React.Component {
                 />
                     <br/><br/>
 
-                    <button className="submitButton" type="submit">Add Article</button>
+                    <button type="submit">Update</button>
 
                     <h4>{this.state.errormessage}</h4>
 

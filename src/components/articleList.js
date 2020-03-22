@@ -31,12 +31,12 @@ export default class ArticleList extends Component {
 
     render() {
         return (
-            <div className="table-wrapper">
-                <table striped bordered hover>
+            <div>
+                <table>
                     <thead>
                     <tr>
                         <th>Email</th>
-                        <th>Author</th>
+                        <th>Title</th>
                         <th>Content</th>
                     </tr>
                     </thead>
