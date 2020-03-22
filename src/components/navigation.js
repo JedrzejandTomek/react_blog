@@ -5,7 +5,7 @@ import {
     Route,
     Link
 } from "react-router-dom";
-import Author from "../Autor/author";
+import Author from "./author";
 
 export default function Navigation() {
     return(
@@ -13,14 +13,14 @@ export default function Navigation() {
             <div>
                 <ul>
                     <li>
-                        <Link to="/..Autor/author">Author</Link>
+                        <Link to="./author">Author</Link>
                     </li>
 
 
                 </ul>
 
                 <Switch>
-                    <Route path="/..Autor/author">
+                    <Route path="./author">
                         <Author/>
                     </Route>
 

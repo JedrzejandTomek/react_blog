@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Author from "./Autor/author";
-import Navigation from "./pasekNawigacji/navigation";
-import Form from "./Formularz/form";
+import Navigation from "./components/navigation";
+import AddArticle from "./components/addArticle";
 import styles from "./style.css"
 
 class Main extends React.Component {
@@ -10,7 +9,7 @@ class Main extends React.Component {
         return(
             <div>
                 <Navigation />
-                <Form />
+                <AddArticle />
             </div>
         )
     }
@@ -18,4 +17,3 @@ class Main extends React.Component {
 
 ReactDOM.render(<Main />, document.getElementById('root'));
 
-// dodane branche
