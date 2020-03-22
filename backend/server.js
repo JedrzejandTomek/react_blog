@@ -14,7 +14,8 @@ app.use('/articles', articleRoute);
 
 mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.db, {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 }).then(() => {
         console.log('Connected!')
     },
