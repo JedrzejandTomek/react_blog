@@ -1,5 +1,6 @@
 import React from 'react'
-
+import HomePageContent from './homePageContent'
+import axios from 'axios'
 
 function setCookie(cookieName, cookieValue) {
 
@@ -37,21 +38,51 @@ function checkCookie() {
         }
     }
 
+
+
+
 getCookie();
 checkCookie();
 
+
 export default class Home extends React.Component {
-       
-      
+
+
+        constructor(props) {
+        super(props);
+        this.state = {
+            articles: []
+        }
+    }
+
+    componentDidMount() {
+        axios.get('http://localhost:4000/articles/')
+            .then(res => {
+                this.setState({
+                    articles: res.data
+                });
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
+      dataTable() {
+        return this.state.articles.map((res, i) => {
+            return <HomePageContent obj={res} key={i}/>;
+        });
+    }
 
     render(){
                
         return(
             <div>
-            <h1>Artykuły</h1>
+                {this.dataTable()}
            
             </div>
             
         )
     }
 }
+
+

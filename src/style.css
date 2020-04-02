@@ -51,3 +51,42 @@ input[type=text]{
     border-radius: 20px;
     cursor: pointer;
 }
+
+.article{
+    width:25%;
+    display: flex;
+    flex-wrap: wrap;
+    color: white;
+    text-shadow: 2px 2px  #3b3b6d;
+    font-size: 20px;
+    border: 2px solid white;
+    margin-bottom: 80px;  
+}
+
+.article-box{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    
+}
+
+.article-title{
+    height: 20%;
+    padding: 20px;
+    text-align: center;
+    text-decoration: underline;
+    cursor: pointer;
+    
+}
+
+.email {
+    width:25%;
+    display: flex;
+    flex-wrap: wrap;
+    color: white;
+    text-shadow: 2px 2px  #3b3b6d;
+    font-size: 20px;
+    border: 2px solid white;
+    margin-bottom: 80px;  
+}
