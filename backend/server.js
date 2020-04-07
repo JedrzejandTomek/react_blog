@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser')
 
 
 const articleRoute = require('./routes/article.route');
+const commentRoute = require('./routes/comment.route');
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -16,6 +17,8 @@ const port = process.env.PORT || 4000;
 app.use(cors());
 app.use(express.json());
 app.use('/articles', articleRoute);
+app.use('/comments', commentRoute);
+
 
 app.use(cookieParser());
 app.get('/home', function(req, res) {

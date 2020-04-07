@@ -1,7 +1,8 @@
 import React, {Component} from "react"
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-
+import AddComment from './addComment'
+import CommentList from './commentList'
 
 export default class HomePageContent extends Component {
 
@@ -21,6 +22,10 @@ export default class HomePageContent extends Component {
                             </div>
                             <div className = "email">
                                 {this.props.obj.email}
+                            </div>
+                            <div>
+                            <AddComment />
+                            <CommentList />
                             </div>
                         </article>
                     </div>
