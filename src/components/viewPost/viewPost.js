@@ -1,5 +1,6 @@
-import React from 'react';
+import React from 'react'
 import axios from 'axios';
+import Comments from './Comments'
 
    
 
@@ -11,9 +12,15 @@ class ViewPost extends React.Component {
          this.state = {
             email: '',
             title: '',
-            content: ''
+            content: '',
+            commentsList: [],
+            setCommentsList: []
         }
     }
+         
+           updateComment = (newComment) =>{
+                 this.state.setCommentsList(this.state.commentsList.concat(newComment))
+            }
 
     componentDidMount() {
         axios.get('http://localhost:4000/articles/show-article/' + this.props.match.params.id)
@@ -29,11 +36,16 @@ class ViewPost extends React.Component {
             })
     }
         render (){
+            
+            
+            
+
     return (
         <div>
             {this.state.title}
             {this.state.content}
             {this.state.email}
+            <Comments commentsList={this.state.commentsList} postId = {this.props.match.params.id} refreshFunction={this.updateComment}/>
         </div>
     )
         }
