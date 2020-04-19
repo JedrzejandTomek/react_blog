@@ -56,11 +56,11 @@ input[type=text]{
     width:25%;
     display: flex;
     flex-wrap: wrap;
-    color: white;
-    text-shadow: 2px 2px  #3b3b6d;
+    color: black;
     font-size: 20px;
     border: 2px solid white;
-    margin-bottom: 80px;  
+    margin-bottom: 80px; 
+    text-decoration: none; 
 }
 
 .article-box{
@@ -80,13 +80,21 @@ input[type=text]{
     
 }
 
+.article-content {
+    color: black;
+}
+
 .email {
     width:25%;
     display: flex;
     flex-wrap: wrap;
-    color: white;
-    text-shadow: 2px 2px  #3b3b6d;
+    color: black;
     font-size: 20px;
     border: 2px solid white;
-    margin-bottom: 80px;  
+    margin-bottom: 80px;
+    
+}
+
+a{
+    text-decoration: none;
 }

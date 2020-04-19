@@ -7,6 +7,7 @@ import ArticleList from './components/articleList';
 import EditArticle from './components/editArticle';
 import Contact from './components/contact';
 import Home from './components/home';
+import viewPost from './components/viewPost/viewPost';
 
 import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
 
@@ -42,6 +43,8 @@ class Main extends React.Component {
                     <Route path="/edit-article/:id" component={EditArticle} />
                     <Route path="/article-list" component={ArticleList} />
                     <Route path="/contact" component={Contact} />
+                    <Route path="/articles/:id" component={viewPost} />
+                   
                 </Switch>
 
         

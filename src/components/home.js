@@ -1,6 +1,7 @@
 import React from 'react'
 import HomePageContent from './homePageContent'
 import axios from 'axios'
+import viewPost from './viewPost/viewPost.js'
 
 function setCookie(cookieName, cookieValue) {
 
@@ -68,8 +69,10 @@ export default class Home extends React.Component {
     }
 
       dataTable() {
-        return this.state.articles.map((res, i) => {
-            return <HomePageContent obj={res} key={i}/>;
+        return this.state.articles.map((article, index) => {
+            return <a href={`/articles/${article._id}`}>
+            
+            <HomePageContent obj={article} key={index}/></a>;
         });
     }
 

@@ -37,6 +37,17 @@ router.route('/edit-article/:id').get((req, res) => {
     })
 })
 
+router.route('/show-article/:id').get((req, res) => {
+    articleSchema.findById(req.params.id, (error, data) => {
+        if(error) {
+            console.log(error)
+            res.json('')
+        } else {
+            res.json(data)
+        }
+    })
+})
+
 router.route('/update-article/:id').put((req, res, next) => {
     articleSchema.findByIdAndUpdate(req.params.id, {$set: req.body},
         (error, data) => {
