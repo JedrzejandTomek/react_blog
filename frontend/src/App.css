@@ -1,0 +1,50 @@
+.toast, .form-group {
+    max-width: 80vw;
+}
+
+.form {
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+
+.post-footer {
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.post-footer p {
+    font-style: italic;
+    font-size: small;
+    color: #b5b5b5;
+}
+
+.comment {
+    background-color: #c7c7c7;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment-icons {
+    margin: auto 0;
+}
+
+.comment-icons a{
+    color: #000;
+}
+
+.fa {
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 5px;
+    padding: 2px;
+    transition: 150ms;
+}
+
+.fa:hover {
+    border: 1px solid rgb(100, 100, 100);
+    cursor: pointer;
+}

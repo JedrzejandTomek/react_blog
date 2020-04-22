@@ -1,54 +1,25 @@
 const express = require('express');
-const cors = require('cors');
 const mongoose = require('mongoose');
-let dbConfig = require('./db/db');
-var cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser');
+const db = require('./db/db').mongoURI;
 
-
-
-const articleRoute = require('./routes/article.route');
-const commentRoute = require('./routes/comment.route');
-
+const posts = require('./routes/api/posts');
+const comments = require('./routes/api/comments');
 
 const app = express();
+
+// Bodyparser middleware
+app.use(bodyParser.json());
+
+//mongo connection 
+mongoose.connect(db, {useNewUrlParser: true})
+.then(() => console.log('Connected do database'))
+.catch(error => console.log('Connection to database failed: ' + error));
+
+//Use Routes
+app.use('/posts', posts);
+app.use('/comments', comments);
+
 const port = process.env.PORT || 4000;
 
-
-
-app.use(cors());
-app.use(express.json());
-app.use('/articles', articleRoute);
-app.use('/comments', commentRoute);
-
-
-
-
-app.use(cookieParser());
-app.get('/home', function(req, res) {
-    
-    if(req.cookies.count){
-        var count = parseInt(req.cookies.count);
-    } else {
-        var count = 0;
-    }
-    count = count+1;
-    res.cookie('count', count);
-    res.send('count :'+ count);
-});
-
-mongoose.Promise = global.Promise;
-mongoose.connect(dbConfig.db, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => {
-        console.log('Connected!')
-    },
-    error => {
-        console.log('Error during connection attempt: ' + error)
-    }
-)
-
-app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
-});
-
+app.listen(port, () => console.log(`Server started on port ${port}`));

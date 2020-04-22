@@ -1,4 +1,3 @@
 module.exports = {
-    db: 'mongodb://localhost:27017/jtblog'
+    mongoURI: "mongodb://localhost:27017/forum_app"
 };
-
