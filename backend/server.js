@@ -2,11 +2,26 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const db = require('./db/db').mongoURI;
+var cookieParser = require('cookie-parser')
 
 const posts = require('./routes/api/posts');
 const comments = require('./routes/api/comments');
 
 const app = express();
+
+// cookies
+app.use(cookieParser());
+app.get('/', function(req, res) {
+    
+    if(req.cookies.count){
+        var count = parseInt(req.cookies.count);
+    } else {
+        count = 0;
+    }
+    count = count+1;
+    res.cookie('count', count);
+    res.send('visits :'+ ' ' + count);
+});
 
 // Bodyparser middleware
 app.use(bodyParser.json());
