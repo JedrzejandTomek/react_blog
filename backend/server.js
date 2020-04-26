@@ -9,6 +9,9 @@ const comments = require('./routes/api/comments');
 
 const app = express();
 
+// upublicznienie folderu uploads
+app.use('/uploads', express.static('uploads'));
+
 // cookies
 app.use(cookieParser());
 app.get('/', function(req, res) {
@@ -38,3 +41,4 @@ app.use('/comments', comments);
 const port = process.env.PORT || 4000;
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
+
