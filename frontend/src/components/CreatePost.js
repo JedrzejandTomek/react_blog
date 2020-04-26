@@ -17,6 +17,7 @@ class PostForm extends React.Component {
             title: "",
             content: "",
             email: "",
+            postImage: null,
             errTitle: "",
             errContent: "",
             errEm: ""
@@ -60,25 +61,40 @@ class PostForm extends React.Component {
             this.setState({[name]: value});
     }
 
+    // wybranie zdjecia
+    selectedImage = e => {
+        this.setState({
+            postImage: e.target.files[0]
+        })
+    }
+
+   
+
     onSubmit = (e) => {
-        //e.preventDefault()
+        e.preventDefault()
 
-        const post = {
-            title: this.state.title,
-            content: this.state.content,
-            email: this.state.email
-        }
-        
-        console.log(post);
+    
 
-        axios.post('/posts', post)
+        const fd = new FormData();
+        fd.append('postImage', this.state.postImage);
+        fd.append('title', this.state.title)
+        fd.append('content', this.state.content)
+        fd.append('email', this.state.email)
+
+        axios.post('/posts', fd)
         .then(res => console.log(res.data))
-
+        
+       
         this.setState({
             title: "",
             content: "",
-            email: ""
+            email: "",
+            postImage: null
         })
+
+         
+       console.log(fd);
+      
 
         this.props.history.push('/')
     }
@@ -86,7 +102,7 @@ class PostForm extends React.Component {
     render() {
         return(
             <div>
-                <Form onSubmit={this.onSubmit} className="form">
+                <Form onSubmit={this.onSubmit} className="form" enctype="multipart/form-data">
                     <FormGroup className="mx-auto">
                         <Label for="title">Title</Label>
                         <Input type="text" id="title" name="title" placeholder="Title:" onChange={this.onChange} />
@@ -105,6 +121,10 @@ class PostForm extends React.Component {
                         <h6>{this.state.errEm}</h6>
                     </FormGroup>
                     
+                       <div>
+                        <input type="file" id="postImage" ref={fileInput => this.fileInput = fileInput} onChange={this.selectedImage}/>
+                       </div>
+
                     <Col className="text-center"><Button type="submit">Submit</Button></Col>
                 </Form>
             </div>

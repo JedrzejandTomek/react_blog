@@ -1,7 +1,8 @@
 import React from 'react';
-import { Card, CardBody, CardTitle, CardText, Button } from 'reactstrap';
+import { Card, CardBody, CardTitle, CardImg, CardText, Button } from 'reactstrap';
 import axios from 'axios';
 import CommentsComponent from './CommentsComponent';
+import Image from 'react-bootstrap/Image'
 
 class Post extends React.Component {
 
@@ -22,6 +23,7 @@ class Post extends React.Component {
                         <CardBody>
                             <CardTitle><h5>{this.props.obj.title}</h5></CardTitle>
                             <CardText>
+                            <CardImg height={400} src={this.props.obj.postImage} />
                                 <p>{this.props.obj.content}</p>
                                 <h5>{this.props.obj.email}</h5>
                                 <footer className="post-footer">
