@@ -35,22 +35,44 @@ class PostForm extends React.Component {
     onSubmit = (e) => {
         e.preventDefault()
 
+        
+        if(this.state.postImage !== null) {
+            const post = new FormData();
+            post.append('author', this.state.author);
+            post.append('title', this.state.title);
+            post.append('content', this.state.content);
+            post.append('postImage', this.state.postImage);
+    
+            axios.post('/posts/img', post)
+            .then(res => console.log(res.data))
+            .then(this.setState({
+                author: "",
+                title: "",
+                content: "",
+                postImage: null
+                })
+            ).then(this.props.history.push('/posts-list'))
+        } else {
+            // const post = new FormData();
+            // post.append('author', this.state.author);
+            // post.append('title', this.state.title);
+            // post.append('content', this.state.content);
 
-        const post = new FormData();
-        post.append('author', this.state.author);
-        post.append('title', this.state.title);
-        post.append('content', this.state.content);
-        post.append('postImage', this.state.postImage);
-
-        axios.post('/posts', post)
-        .then(res => console.log(res.data))
-        .then(this.setState({
-            author: "",
-            title: "",
-            content: "",
-            postImage: null
-            })
-        ).then(this.props.history.push('/posts-list'))
+            const post = {
+                author: this.state.author,
+                title: this.state.title,
+                content: this.state.content
+            }
+    
+            axios.post('/posts', post)
+            .then(res => console.log(res.data))
+            .then(this.setState({
+                author: "",
+                title: "",
+                content: ""
+                })
+            ).then(this.props.history.push('/posts-list'))
+        }
     }
 
     render() {

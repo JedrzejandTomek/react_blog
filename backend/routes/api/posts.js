@@ -46,12 +46,22 @@ router.get('/', (req, res) => {
 // @desc Create a post
 //@access public
 
-router.post('/', upload.single('postImage'), (req, res) => {
+router.post('/img', upload.single('postImage'), (req, res) => {
     const newPost = new Post({
         author: req.body.author,
         title: req.body.title,
         content: req.body.content,
         postImage: req.file.path
+    });
+    newPost.save()
+    .then(post => res.json(post));
+});
+
+router.post('/', (req, res) => {
+    const newPost = new Post({
+        author: req.body.author,
+        title: req.body.title,
+        content: req.body.content
     });
     newPost.save()
     .then(post => res.json(post));
