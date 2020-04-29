@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-path = require('path');
 
+
+//file upload
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
         cb(null, './uploads/');
@@ -18,37 +19,17 @@ const fileFilter = (req, file, cb) => {
         cb(null, false);
         console.log('Not valid format')
     }
-}
+};
 
-//limit uploadowanego zdjecia na 50 MB, walidacja pliku na jpg lub png (funkcja fileFilter)
 const upload = multer({storage: storage, 
-limits:{
-    fileSize: 1024 * 1024 * 50
-},
-    fileFilter : fileFilter
-});
-
+    limits:{
+        fileSize: 1024 * 1024 * 50
+    },
+        fileFilter : fileFilter
+    });
 
 //Post model
 const Post = require('../../models/post');
-
-// @route POST /posts
-// @desc Create a post
-//@access public
-
-router.post('/', upload.single('postImage'), (req, res, next) => {
-    console.log(req.file);
-    const newPost = new Post({
-        title: req.body.title,
-        content: req.body.content,
-        email: req.body.email,
-        postImage: req.file.path
-    });
-    newPost.save()
-    .then(post => res.json(post));
-});
-
-
 
 // @route GET /posts
 // @desc Get all posts
@@ -61,6 +42,20 @@ router.get('/', (req, res) => {
 });
 
 
+// @route POST /posts
+// @desc Create a post
+//@access public
+
+router.post('/', upload.single('postImage'), (req, res) => {
+    const newPost = new Post({
+        author: req.body.author,
+        title: req.body.title,
+        content: req.body.content,
+        postImage: req.file.path
+    });
+    newPost.save()
+    .then(post => res.json(post));
+});
 
 // @route DELETE /posts/:id
 // @desc Delete a post
@@ -79,7 +74,8 @@ router.delete('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
     Post.findById(req.params.id)
     .then(item => item.update({$set: req.body})
-    .then(() => res.json({status: 'Post updated'})))
+    .then(item => item.update({$set: req.file})
+    .then(() => res.json({status: 'Post updated'}))))
     .catch(error => res.status(404).json({status: `Can't update, error: ${error}`}));
 })
 

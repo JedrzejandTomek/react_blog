@@ -12,7 +12,7 @@ class CommentsList extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('/comments/')
+        axios.get('/comments')
         .then(res => {
             this.setState({
                 comments: res.data
@@ -22,11 +22,17 @@ class CommentsList extends React.Component {
     }
 
     commentsList = () => {
-        return this.state.comments.map((res, i) => {
-            if (res.postID === this.props.postID) {
+        return this.state.comments
+            .filter(res => res.postID === this.props.postID)
+            .map((res, i) => { 
                 return <Comment edit={this.props.edit} obj={res} key={i} />
-            }
-        })
+             })
+
+        // return this.state.comments.map((res, i) => {
+        //     if (res.postID === this.props.postID) {
+        //         return <Comment edit={this.props.edit} obj={res} key={i} />
+        //     }
+        // })
     }
 
     render() {

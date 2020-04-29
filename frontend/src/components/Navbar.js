@@ -10,7 +10,6 @@ import {
     Container
 } from 'reactstrap';
 
-
 class AppNavbar extends Component {
     constructor(props) {
         super(props);
@@ -32,13 +31,20 @@ class AppNavbar extends Component {
                 <Navbar color="dark" dark expand="sm" className="mb-5">
                     <Container>
                         <NavbarBrand href="/">Forum</NavbarBrand>
-                         <NavbarBrand href="/contact">Contact</NavbarBrand>
-                         <NavbarBrand href="/about">About Us</NavbarBrand>
                         <NavbarToggler onClick={this.toggle} />
                         <Collapse isOpen={this.state.isOpen} navbar>
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
                                     <NavLink href="/create-article">Create Article</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink href="/posts-list/">Posts List</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink href="/contact/">Contact</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink href="/about/">About</NavLink>
                                 </NavItem>
                             </Nav>
                         </Collapse>

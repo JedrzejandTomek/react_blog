@@ -42,7 +42,6 @@ function checkCookie() {
 getCookie();
 checkCookie();
 
-
 class PostsList extends React.Component {
     constructor(props) {
         super(props)
@@ -50,8 +49,6 @@ class PostsList extends React.Component {
             articles: []
         }
     }
-
-    
 
     componentDidMount() {
         axios.get("/posts")
@@ -71,7 +68,7 @@ class PostsList extends React.Component {
 
     render() {
         return(
-            <div>
+            <div className="post-list-container">
                 {this.postsList()}
             </div>
         )

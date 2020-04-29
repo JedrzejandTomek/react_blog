@@ -13,17 +13,15 @@ class CommentsComponent extends React.Component {
 
         this.state = {
             comment: "",
-            author: "",
-            postID: this.props.postID
+            author: ""
         }
     }
 
     onSubmit = (e) => {
-
         const comment = {
             comment: this.state.comment,
             author: this.state.author,
-            postID: this.state.postID
+            postID: this.props.postID
         }
 
         console.log(comment)
@@ -61,17 +59,11 @@ class CommentsComponent extends React.Component {
             margin: "auto"
         }
 
-        const formStyle = {
-            display: "flex",
-            justifyContent: "space-between",
-            width: "100%"
-        }
-
         return(
             <div>
                 <CommentsList postID={this.props.postID} edit={this.editComment} />
                 <p>Dodaj komentarz:</p>
-                <Form onSubmit={this.onSubmit} style = {formStyle}>
+                <Form onSubmit={this.onSubmit} className="add-comment">
                     <Input type="text" value={this.state.comment} name="comment" onChange={this.onChange} placeholder="Comment:" />
                         
                     <Input type="text" value={this.state.author} name="author" onChange={this.onChange} placeholder="Author:" className="ml-2" />

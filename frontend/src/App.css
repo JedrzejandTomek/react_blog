@@ -1,10 +1,8 @@
-.toast, .form-group {
-    max-width: 80vw;
-}
-
 .form {
     border-bottom: 1px solid black;
     padding-bottom: 10px;
+    max-width: 80vw;
+    margin: auto;
 }
 
 .post-footer {
