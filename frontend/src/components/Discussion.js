@@ -44,14 +44,14 @@ class PostDiscussion extends React.Component {
                 <div className="discussion-container p-3">
                     <Card className="mx-auto">
                         <CardBody className="discussion-body">
-                            <div className="discussion-image"><CardImg height={200} width={200} src={this.state.postImage} /></div>
+                            <div className="discussion-image"><CardImg src={this.state.postImage} /></div>
                             <CardTitle><h5>{this.state.title}</h5></CardTitle>
                             <CardText>
                                 <p>{this.state.content}</p>
                                 <footer className="post-footer">
                                     <p>Opublikowano: {this.state.date} by {this.state.author}</p>
                                     <div>
-                                        <Button href="/" onClick={this.deletePost} className="float-right"><i class="fa fa-trash-o"></i></Button>
+                                        <Button href="/posts-list" onClick={this.deletePost} className="float-right"><i class="fa fa-trash-o"></i></Button>
                                         <Button href={"/edit-post/" + this.state.id} className="mr-2 float-right">Edit Post</Button>
                                     </div>
                                 </footer>

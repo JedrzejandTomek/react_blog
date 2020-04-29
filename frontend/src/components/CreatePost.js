@@ -44,15 +44,13 @@ class PostForm extends React.Component {
 
         axios.post('/posts', post)
         .then(res => console.log(res.data))
-
-        this.setState({
+        .then(this.setState({
             author: "",
             title: "",
             content: "",
             postImage: null
-        });
-
-        this.props.history.push('/posts-list')
+            })
+        ).then(this.props.history.push('/posts-list'))
     }
 
     render() {

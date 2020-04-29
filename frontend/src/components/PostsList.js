@@ -50,7 +50,7 @@ class PostsList extends React.Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         axios.get("/posts")
         .then(res => {
             this.setState({
