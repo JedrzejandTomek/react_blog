@@ -27,7 +27,7 @@ class Comment extends React.Component {
                 </div>
                 <div className="comment-icons">
                     <i onClick={() => this.props.edit(this.props.obj._id)} className="fa fa-pencil-square-o"></i>
-                    <a onClick={this.deleteComment} href='/discussion' ><i className="fa fa-trash-o ml-2"></i></a>
+                    <a onClick={this.deleteComment} href={'/discussion/' + this.props.postID} ><i className="fa fa-trash-o ml-2"></i></a>
                 </div>
             </div>
         )

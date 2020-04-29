@@ -9,6 +9,7 @@
 }
 
 .post-footer {
+    padding-left: 20px;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -75,6 +76,7 @@
 .card-body {
 
     .card-title {
+        margin-top: 10px;
         a {
             text-decoration: none;
         }
@@ -99,3 +101,7 @@
     }
 }
 
+.validation-error {
+    color: #ff0000;
+    font-weight: 800;
+}
