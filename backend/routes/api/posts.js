@@ -84,8 +84,7 @@ router.delete('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
     Post.findById(req.params.id)
     .then(item => item.update({$set: req.body})
-    .then(item => item.update({$set: req.file})
-    .then(() => res.json({status: 'Post updated'}))))
+    .then(() => res.json({status: 'Post updated'})))
     .catch(error => res.status(404).json({status: `Can't update, error: ${error}`}));
 })
 
