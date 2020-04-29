@@ -1,0 +1,101 @@
+.form-container {
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+    
+    .form {
+        max-width: 70vw;
+        margin: auto;
+    }
+}
+
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    p {
+        font-size: small;
+        font-style: italic;
+        color: #b5b5b5;
+    }
+}
+
+.comment {
+    background-color: #c7c7c7;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: space-between;
+
+    .comment-icons {
+        margin: auto 0;
+
+        a {
+            color: #000;
+        }
+
+        .fa {
+            border: 1px solid rgba(0, 0, 0, 0);
+            border-radius: 5px;
+            padding: 2px;
+            transition: 150ms;
+        }
+
+        .fa:hover {
+            border: 1px solid rgb(100, 100, 100);
+            cursor: pointer;
+        }
+    }
+}
+
+.app-body-container {
+    max-width: 70vw;
+    margin: auto;
+}
+
+.post-list-single-post {
+    display: flex;
+
+    .card-img {
+        max-width: 30%;
+        height: auto;
+    }
+}
+
+.discussion-body {
+    .discussion-image {
+        max-width: 80%;
+        height: auto;
+        margin: auto;
+        object-fit: cover;
+    }
+}
+
+.card-body {
+
+    .card-title {
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
+.post-list-container {
+    padding-bottom: 50px;
+}
+
+.add-comment {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.nav-link {
+    color: rgba(255,255,255,.5);
+
+    &:hover {
+        color: rgba(255,255,255,.75); 
+    }
+}
+
