@@ -4,7 +4,7 @@ import PostForm from './components/CreatePost';
 import PostsList from './components/PostsList';
 import EditPost from './components/EditPost';
 import Discussion from './components/Discussion';
-import MainPage from './components/MainPage';
+import MainPage from './components/subpages/MainPage';
 import About from './components/subpages/About'
 import Contact from './components/subpages/Contact'
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";

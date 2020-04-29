@@ -6,6 +6,7 @@ import {
     Input,
     Button
 } from 'reactstrap';
+import {withRouter} from 'react-router-dom';
 
 class CommentsComponent extends React.Component {
     constructor(props) {
@@ -13,11 +14,54 @@ class CommentsComponent extends React.Component {
 
         this.state = {
             comment: "",
-            author: ""
+            author: "",
+            commentError: " ",
+            comments: []
+        }
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        axios.get('/comments')
+        .then(res => {
+            this.setState({
+                comments: res.data
+            })
+        })
+        .catch(error => console.log(error))
+    }
+
+    componentDidUpdate() {
+        axios.get('/comments')
+        .then(res => {
+            this.setState({
+                comments: res.data
+            })
+        })
+        .catch(error => console.log(error))
+    }
+
+    validateComment = () => {
+        this.setState({
+            commentError: ""
+        })
+        
+        if(this.state.author === "") {
+            this.setState({
+                author: "Anonymous"
+            })            
+        }
+
+        if (this.state.comment === "") {
+            this.setState({
+                commentError: "Comment can't be empty!"
+            })
         }
     }
 
-    onSubmit = (e) => {
+    async onSubmit (e) {
+        e.preventDefault();
+        await this.validateComment();
         const comment = {
             comment: this.state.comment,
             author: this.state.author,
@@ -33,6 +77,7 @@ class CommentsComponent extends React.Component {
             comment: '',
             author: ''
         })
+        this.props.history.push('/discussion/' + this.props.postID)
     }
 
     onChange = (e) => {
@@ -54,24 +99,20 @@ class CommentsComponent extends React.Component {
     }
 
     render() {
-        const buttonStyle = {
-            width: "100px",
-            margin: "auto"
-        }
-
         return(
             <div>
-                <CommentsList postID={this.props.postID} edit={this.editComment} />
+                <CommentsList postID={this.props.postID} edit={this.editComment} comments={this.state.comments}/>
                 <p>Dodaj komentarz:</p>
                 <Form onSubmit={this.onSubmit} className="add-comment">
                     <Input type="text" value={this.state.comment} name="comment" onChange={this.onChange} placeholder="Comment:" />
                         
-                    <Input type="text" value={this.state.author} name="author" onChange={this.onChange} placeholder="Author:" className="ml-2" />
-                    <Button style={buttonStyle} type="submit" className="ml-2">Submit</Button>
+                    <Input type="text" value={this.state.author} name="author" onChange={this.onChange} placeholder="Anonymous" className="ml-2" />
+                    <Button type="submit" className="ml-2">Submit</Button>
                 </Form>
+                <p className="validation-error">{this.state.commentError}</p>
             </div>
         )
     }
 }
 
-export default CommentsComponent;
+export default withRouter(CommentsComponent)

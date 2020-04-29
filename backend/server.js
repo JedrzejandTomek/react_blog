@@ -41,6 +41,7 @@ app.use('/posts', posts);
 app.use('/comments', comments);
 app.use('/users', users);
 app.use('/auth' , auth);
+app.use('/uploads', express.static('uploads'));
 app.use('/posts-list/uploads', express.static('uploads'));
 app.use('/discussion/uploads', express.static('uploads'));
 
