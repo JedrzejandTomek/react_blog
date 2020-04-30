@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { check, validationResult } = require('express-validator');
 
 //Comment model
 const Comment = require('../../models/Comment');
@@ -17,7 +18,15 @@ router.get('/', (req, res) => {
 // @desc Post a comment
 //@access public
 
-router.post('/', (req, res) => {
+router.post('/', [
+    check('comment', 'Comment is required').not().isEmpty(),
+    check('author', 'Author is required').not().isEmpty(),
+    check('postID', 'PostID is required').not().isEmpty()
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
     const newComment = new Comment({
         comment: req.body.comment,
         author: req.body.author,
@@ -32,7 +41,15 @@ router.post('/', (req, res) => {
 // @desc Update a comment
 //@access public
 
-router.put('/:id', (req, res) => {
+router.put('/:id', [
+    check('comment', 'Comment is required').not().isEmpty(),
+    check('author', 'Author is required').not().isEmpty(),
+    check('postID', 'PostID is required').not().isEmpty()
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
     Comment.findById(req.params.id)
     .then(comment => comment.update({$set: req.body})
     .then(() => res.json({status: 'Comment updated'})))

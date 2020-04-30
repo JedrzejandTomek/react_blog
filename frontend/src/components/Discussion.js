@@ -15,7 +15,7 @@ class PostDiscussion extends React.Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         axios.get('/posts/' + this.props.match.params.id)
         .then(res => {
             this.setState({
@@ -53,7 +53,7 @@ class PostDiscussion extends React.Component {
                             <footer className="post-footer">
                                 <p>Opublikowano: {this.state.date} by {this.state.author}</p>
                                 <div>
-                                    <Button onClick={this.deletePost} className="float-right"><i class="fa fa-trash-o"></i></Button>
+                                    <Button onClick={this.deletePost} className="float-right"><i className="fa fa-trash-o"></i></Button>
                                     <Button href={"/edit-post/" + this.state.id} className="mr-2 float-right">Edit Post</Button>
                                 </div>
                             </footer>

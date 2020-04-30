@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
+const { check, validationResult } = require('express-validator');
 
 
 //file upload
@@ -46,7 +47,16 @@ router.get('/', (req, res) => {
 // @desc Create a post
 //@access public
 
-router.post('/img', upload.single('postImage'), (req, res) => {
+router.post('/img', [
+    check('author', 'Author is required').not().isEmpty(),
+    check('title', 'Title is required').not().isEmpty(),
+    check('content', 'Content is required').not().isEmpty()
+], upload.single('postImage'), (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     const newPost = new Post({
         author: req.body.author,
         title: req.body.title,
@@ -57,7 +67,15 @@ router.post('/img', upload.single('postImage'), (req, res) => {
     .then(post => res.json(post));
 });
 
-router.post('/', (req, res) => {
+router.post('/', [
+    check('author', 'Author is required').not().isEmpty(),
+    check('title', 'Title is required').not().isEmpty(),
+    check('content', 'Content is required').not().isEmpty()
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
     const newPost = new Post({
         author: req.body.author,
         title: req.body.title,
@@ -81,7 +99,15 @@ router.delete('/:id', (req, res) => {
 // @desc Update a post
 //@access public
 
-router.put('/:id', (req, res) => {
+router.put('/:id', [
+    check('author', 'Author is required').not().isEmpty(),
+    check('title', 'Title is required').not().isEmpty(),
+    check('content', 'Content is required').not().isEmpty()
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
     Post.findById(req.params.id)
     .then(item => item.update({$set: req.body})
     .then(() => res.json({status: 'Post updated'})))
