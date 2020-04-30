@@ -19,7 +19,7 @@ class Post extends React.Component {
         })
     }
 
-    componentWillMount() {
+    componentDidMount() {
         if (this.props.obj.postImage) {
             this.setState({
                 img: <CardImg height={200} width={200} src={this.props.obj.postImage} />

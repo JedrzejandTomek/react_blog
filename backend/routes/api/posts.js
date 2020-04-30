@@ -96,7 +96,10 @@ router.get('/:id', (req, res) => {
     Post.findById(req.params.id)
     .then(item => res.json(item))
     .then(() => res.json({status: 'Found'}))
-    .catch(error => res.status(404).json({status: `Can't find, error: ${error}`}));
+    .catch(error => {
+        res.status(404);
+        //console.log(error);
+    });
 });
 
 

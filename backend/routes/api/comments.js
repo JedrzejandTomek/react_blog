@@ -34,11 +34,12 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
     Comment.findById(req.params.id)
-    .then(comment => {
-        comment.update({$set: req.body})
+    .then(comment => comment.update({$set: req.body})
+    .then(() => res.json({status: 'Comment updated'})))
+    .catch(error => {
+        console.log(error)
+        res.status(404)
     })
-    .then(() => res.json({status: 'Comment updated'}))
-    .catch(error => res.status(404).json({status: `Can't update comment, error: ${error}`}))
 })
 
 // @route GET /comment/:id
@@ -50,8 +51,11 @@ router.get('/:id', (req, res) => {
     .then(comment => {
         res.json(comment)
     })
-    .then(() => res.json({status: 'Found'}))
-    .catch(error => res.status(404).json({status: `Can't find comment, error: ${error}`}))
+    .then(() => console.log('Found'))
+    .catch(error => {
+        console.log(error)
+        res.status(404)
+    })
 })
 
 // @route DELETE /comment/:id
@@ -61,7 +65,10 @@ router.get('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
     Comment.findById(req.params.id)
     .then(comment => comment.remove().then(()=> res.json({status: 'Comment deleted'})))
-    .catch(error => res.status(404).json({status: `Can't delete comment, error: ${error}`}))
+    .catch(error => {
+        console.log(error)
+        res.status(404)
+    })
 })
 
 module.exports = router;

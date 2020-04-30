@@ -16,7 +16,8 @@ class CommentsComponent extends React.Component {
             comment: "",
             author: "",
             commentError: " ",
-            comments: []
+            comments: [],
+            editCommentId: ""
         }
         this.onSubmit = this.onSubmit.bind(this);
     }
@@ -62,22 +63,32 @@ class CommentsComponent extends React.Component {
     async onSubmit (e) {
         e.preventDefault();
         await this.validateComment();
-        const comment = {
+
+        if (this.state.editCommentId === "") {
+            const comment = {
             comment: this.state.comment,
             author: this.state.author,
             postID: this.props.postID
+            }
+
+            axios.post('/comments', comment)
+            .then(res => console.log(res))
+
+            this.props.history.push('/discussion/' + this.props.postID)
+        } else {
+            const editComment = {
+                comment: this.state.comment,
+                author: this.state.author
+            }
+
+            axios.put('/comments/' + this.state.editCommentId, editComment)
+            .then(res => console.log(res))
         }
 
-        console.log(comment)
-
-        axios.post('/comments', comment)
-        .then(res => console.log(res))
-
         this.setState({
-            comment: '',
-            author: ''
+            comment: "",
+            author: ""
         })
-        this.props.history.push('/discussion/' + this.props.postID)
     }
 
     onChange = (e) => {
@@ -89,9 +100,11 @@ class CommentsComponent extends React.Component {
     editComment = (id) => {
         axios.get('/comments/' + id)
         .then(res => {
+            console.log(res)
             this.setState({
                 comment: res.data.comment,
-                author: res.data.author
+                author: res.data.author,
+                editCommentId: res.data._id
             })
         }).catch(error => {
             console.log(error)

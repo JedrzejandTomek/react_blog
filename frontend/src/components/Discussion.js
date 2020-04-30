@@ -36,6 +36,7 @@ class PostDiscussion extends React.Component {
         }).catch((error) => {
             console.log(error)
         })
+        this.props.history.push('/posts-list');
     }
 
     render() {
@@ -47,16 +48,16 @@ class PostDiscussion extends React.Component {
                             <div className="discussion-image"><CardImg src={this.state.postImage} /></div>
                             <CardTitle><h5>{this.state.title}</h5></CardTitle>
                             <CardText>
-                                <p>{this.state.content}</p>
-                                <footer className="post-footer">
-                                    <p>Opublikowano: {this.state.date} by {this.state.author}</p>
-                                    <div>
-                                        <Button href="/posts-list" onClick={this.deletePost} className="float-right"><i class="fa fa-trash-o"></i></Button>
-                                        <Button href={"/edit-post/" + this.state.id} className="mr-2 float-right">Edit Post</Button>
-                                    </div>
-                                </footer>
-                                <CommentsComponent postID={this.state.id} />
+                                {this.state.content}
                             </CardText>
+                            <footer className="post-footer">
+                                <p>Opublikowano: {this.state.date} by {this.state.author}</p>
+                                <div>
+                                    <Button onClick={this.deletePost} className="float-right"><i class="fa fa-trash-o"></i></Button>
+                                    <Button href={"/edit-post/" + this.state.id} className="mr-2 float-right">Edit Post</Button>
+                                </div>
+                            </footer>
+                            <CommentsComponent postID={this.state.id} />                    
                         </CardBody>
                     </Card>
                 </div>
