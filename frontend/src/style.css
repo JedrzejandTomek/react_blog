@@ -10,9 +10,15 @@
 
 .post-footer {
   padding-left: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
 }
 
 .post-footer p {
@@ -26,8 +32,12 @@
   padding: 10px;
   margin: 10px;
   border-radius: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .comment .comment-icons {
@@ -42,6 +52,7 @@
   border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 5px;
   padding: 2px;
+  -webkit-transition: 150ms;
   transition: 150ms;
 }
 
@@ -56,6 +67,8 @@
 }
 
 .post-list-single-post {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -68,7 +81,8 @@
   max-width: 80%;
   height: auto;
   margin: auto;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .card-body .card-title {
@@ -84,8 +98,12 @@
 }
 
 .add-comment {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 100%;
 }
 
@@ -100,4 +118,44 @@
 .validation-error {
   color: #ff0000;
   font-weight: 800;
+}
+
+.content-box {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.contact-data {
+  padding-right: 30px;
+}
+
+.image-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.image-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+}
+
+.image-box img {
+  display: block;
+  width: 90%;
+}
+
+.made {
+  padding-top: 30px;
+  text-align: center;
 }
