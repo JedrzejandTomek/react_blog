@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const { check, validationResult } = require('express-validator');
+const { check, body, validationResult } = require('express-validator');
 
 
 //file upload
@@ -47,11 +47,11 @@ router.get('/', (req, res) => {
 // @desc Create a post
 //@access public
 
-router.post('/img', [
-    check('author', 'Author is required').not().isEmpty(),
-    check('title', 'Title is required').not().isEmpty(),
-    check('content', 'Content is required').not().isEmpty()
-], upload.single('postImage'), (req, res) => {
+router.post('/img', upload.single('postImage'), [
+    body('author', 'Author is required').not().isEmpty(),
+    body('title', 'Title is required').not().isEmpty(),
+    body('content', 'Content is required').not().isEmpty()
+], (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
