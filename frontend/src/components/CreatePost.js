@@ -73,7 +73,7 @@ class PostForm extends React.Component {
                 post.append('content', this.state.content);
                 post.append('postImage', this.state.postImage);
         
-                axios.post('/posts/img', post)
+                axios.post('/posts/img/', post)
                 .then(res => console.log(res.data))
                 .then(this.setState({
                     author: "",
