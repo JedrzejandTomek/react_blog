@@ -1,3 +1,4 @@
+
 .form-container {
     border-bottom: 1px solid black;
     padding-bottom: 10px;
@@ -104,4 +105,38 @@
 .validation-error {
     color: #ff0000;
     font-weight: 800;
+}
+
+
+
+.content-box{
+
+    margin:auto;
+    display:flex;
+}
+
+.contact-data{
+    padding-right: 30px;
+}
+
+.image-container{
+    display:flex;
+    justify-content: space-evenly;
+}
+
+.image-box{
+    display:flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.image-box img{
+    
+    display:block;
+    width: 90%;
+}
+
+.made {
+    padding-top: 30px;
+    text-align: center;
 }
