@@ -10,15 +10,9 @@
 
 .post-footer {
   padding-left: 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 .post-footer p {
@@ -32,12 +26,8 @@
   padding: 10px;
   margin: 10px;
   border-radius: 25px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 
 .comment .comment-icons {
@@ -52,7 +42,6 @@
   border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 5px;
   padding: 2px;
-  -webkit-transition: 150ms;
   transition: 150ms;
 }
 
@@ -67,8 +56,6 @@
 }
 
 .post-list-single-post {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -81,8 +68,7 @@
   max-width: 80%;
   height: auto;
   margin: auto;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .card-body .card-title {
@@ -98,12 +84,8 @@
 }
 
 .add-comment {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   width: 100%;
 }
 
@@ -122,8 +104,6 @@
 
 .content-box {
   margin: auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -132,21 +112,13 @@
 }
 
 .image-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  justify-content: space-evenly;
 }
 
 .image-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  justify-content: space-evenly;
   width: 100%;
 }
 
